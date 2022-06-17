@@ -1,0 +1,33 @@
+
+/*Hero Section*/
+#hero {
+    display: flex;
+    height: 600px;
+    padding: 10%;
+    align-items: center;
+    justify-content: center;
+    background-image: url("bgimages/sampleheroimage.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+}
+
+#hero h1, #hero h2 {
+    color: #ffffff;
+}
+
+/*Mission Section*/
+.mission {
+    display: flex;
+    height: 600px;
+    align-items: center;
+    background-image: url("bgimages/samplemissionimage.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+}
+
+/*Subscription Plans Section*/
+.subscriptiongrid img {
+    width: 100%;
+}

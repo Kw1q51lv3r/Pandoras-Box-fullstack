@@ -1,0 +1,148 @@
+/*Hero Section*/
+#hero {
+    display: flex;
+    height: 600px;
+    padding: 10%;
+    align-items: center;
+    justify-content: center;
+    background-image: url("bgimages/samplehero02.png");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+}
+
+#hero h1, #hero h2 {
+    color: #ffffff;
+}
+
+/*.sectionpadding {
+    border-bottom: 1px solid #000000;
+}*/
+
+#MissionStatementD {
+    text-align: center;
+}
+
+#MissionStatementD > h3 {
+    background-color: lightgrey;
+    padding: 10px;
+}
+
+#MissionStatementD > p {
+    padding-top: 15px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+#MissionStatementM {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+    #MissionStatementD {
+        display: none;
+    }
+    
+    #MissionStatementM {
+        display: contents;
+        text-align: center;
+    }
+
+    #MissionStatementM > h3 {
+        background-color: lightgrey;
+        padding:10px
+    }
+}
+
+#TeamAboutD {
+    text-align: center;
+}
+
+#TeamAboutD > h3 {
+    background-color: lightgrey;
+    padding: 10px;
+}
+
+#TeamAboutD > p {
+    padding-top: 15px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+#TeamAboutM {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+    #TeamAboutD {
+        display: none;
+    }
+    
+    #TeamAboutM {
+        display: contents;
+        text-align: center;
+    }
+
+    #TeamAboutM > h3 {
+        background-color: lightgrey;
+        padding:10px
+    }
+}
+
+.AboutPerson {
+    margin-bottom: 45px;
+}
+
+.AboutPerson > h3 {
+    background-color: lightgrey;
+    padding: 10px;
+    text-align: center;
+}
+
+.AboutContentD {
+    display: flex;
+}
+
+.AboutContentD > img {
+    min-width: 150px;
+    width: 35%;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 15px;
+    margin-bottom: auto;
+}
+
+.AboutContentD > p {
+    margin-top: 10px;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.AboutContentM {
+    display: none;
+}
+
+@media only screen and (max-width: 767px) {
+
+    .AboutContentD {
+        display: none;
+    }
+    
+    .AboutContentM {
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .AboutContentM > img {
+        margin-top: 15px;
+        height: auto;
+        width: 100%;
+    }
+
+    .AboutContentM > p {
+        margin-top: 10px;
+    }
+}

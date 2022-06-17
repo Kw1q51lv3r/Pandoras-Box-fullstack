@@ -1,0 +1,64 @@
+.paddingtoptall {
+    padding-top: 25px;
+}
+
+/*Product Hero Section*/
+#pdthero {
+    display: flex;
+    height: 600px;
+    padding: 10%;
+    align-items: center;
+    justify-content: flex-start;
+    background-image: url("bgimages/marblewhitebg.jpg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-size: cover;
+}
+
+/*Subscription Plans Section*/
+.subscriptiongrid img {
+    width: 100%;
+}
+
+.line {
+    text-decoration: line-through;
+}
+
+.plancard {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.bisque {
+    background-color: rgb(233, 219, 202);
+}
+
+.teal {
+    background-color: rgb(165, 219, 219);
+}
+
+/*Products Section*/
+.pdt img {
+    width: 100%;
+    
+}
+
+.productcards > a {
+    text-decoration: none;
+    color: #545454;
+}
+
+.productcards {
+    transition: 0.5s;
+    padding-top: 25px;
+}
+
+.productcards:hover {
+    background-color: #ECECEC;
+    color: white;
+  }
+
+:focus {
+    outline: 0 !important;
+    box-shadow: 0 0 0 0 rgba(0, 0, 0, 0) !important;
+  }
