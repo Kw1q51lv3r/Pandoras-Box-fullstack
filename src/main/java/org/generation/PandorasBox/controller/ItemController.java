@@ -1,43 +1,42 @@
 package org.generation.PandorasBox.controller;
 
-import org.generation.PandorasBox.repository.entity.*;
-import org.generation.PandorasBox.service.*;
-import org.generation.PandorasBox.controller.dto.ItemDto;
 import org.generation.PandorasBox.component.FileUploadUtil;
-
-import org.springframework.beans.factory.annotation.*;
-import org.springframework.util.*;
+import org.generation.PandorasBox.controller.dto.ItemDto;
+import org.generation.PandorasBox.repository.entity.productItem;
+import org.generation.PandorasBox.service.ItemService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.*;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.io.*;
+import java.io.IOException;
 
 @RestController
-@RequestMapping("/item")
+@RequestMapping("/productItem")
 public class ItemController {
 
     @Value("${image.folder}")
     private String imageFolder;
 
+
     final ItemService itemService;
 
-    public ItemController( @Autowired ItemService itemService )
-    {
+    public ItemController(@Autowired ItemService itemService) {
         this.itemService = itemService;
     }
 
     @CrossOrigin
-    @GetMapping( "/all" )
-    public Iterable<Item> getItems()
-    {
+    @GetMapping("/all")
+    public Iterable<productItem> getItems() {
         return itemService.all();
     }
 
+
     @CrossOrigin
-    @GetMapping( "/{id}" )
-    public Item findItemById( @PathVariable Integer id )
-    {
-        return itemService.findById( id );
+    @GetMapping("/{productID}")
+    public productItem findItemById(@PathVariable Integer productID) {
+        return itemService.findById(productID);
     }
 
     @CrossOrigin
@@ -47,26 +46,33 @@ public class ItemController {
         itemService.delete( id );
     }
 
+// post method - API endpoint for POST HTTP request from the client
+
     @CrossOrigin
     @PostMapping("/add")
-    public void save(  @RequestParam(name="name", required = true) String name,
-                       @RequestParam(name="id", required = true) String id,
-                       @RequestParam(name="price", required = true) Integer price,
-                       @RequestParam(name="description", required = true) String description,
-                       @RequestParam(name="trivia", required = true) String trivia,
-                       @RequestParam(name="imageUrl", required = true) String imageUrl,
-                       @RequestParam(name="recoDelivery", required = true) Integer recoDelivery,
-                       @RequestParam(name="remarks", required = true) String remarks,
-                       @RequestParam(name="category", required = true) String category,
+    public void save(
+            @RequestParam(name="productName", required = true) String productName,
+                       @RequestParam(name="productPrice", required = true) Integer productPrice,
+                       @RequestParam(name="productDescription", required = true) String productDescription,
+                       @RequestParam(name="productTrivia", required = true) String productTrivia,
+                       @RequestParam(name="productImgURL", required = true) String productImgURL,
+                       @RequestParam(name="productDelivery", required = true) Integer productDelivery,
+                       @RequestParam(name="productRemarks", required = true) String productRemarks,
+                       @RequestParam(name="productCategory", required = true) String productCategory,
                        @RequestParam("imagefile") MultipartFile multipartFile) throws IOException {
 
         String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
         FileUploadUtil.saveFile(imageFolder, fileName, multipartFile);
 
-        String fullPath = imageUrl;
-        ItemDto itemDto = new ItemDto(name, id, price, description, trivia, imageUrl, recoDelivery, remarks, category);
-        itemService.save(new Item(itemDto));
+
+        //save all the records in mySQL database
+        String fullPath = imageFolder + "/" + productImgURL;
+        ItemDto itemDto = new ItemDto(productName, productPrice, productDescription, productTrivia, fullPath, productDelivery, productRemarks, productCategory);
+        itemService.save(new productItem(itemDto));
     }
 
 
+
+
 }
+
