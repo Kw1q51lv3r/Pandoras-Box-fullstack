@@ -10,14 +10,16 @@ package org.generation.PandorasBox.security;
 // response back to the browser (client) - index.html
 
 
-import org.springframework.beans.factory.annotation.*;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.*;
+import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
+import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import java.nio.file.*;
 
 @Configuration
-public class MvcConfig  implements WebMvcConfigurer {
+public class MvcConfig implements WebMvcConfigurer {
 
     @Value("${image.folder}")
     private String imageFolder; //now imageFolder variable the value = productimages
@@ -39,12 +41,15 @@ public class MvcConfig  implements WebMvcConfigurer {
                 .setCachePeriod(0);
 
 
+        //expose the productimages folder to allow external client to access the files from the server
         Path uploadDir = Paths.get(imageFolder);
         String uploadPath = uploadDir.toFile().getAbsolutePath();
 
         registry.addResourceHandler("/" + imageFolder + "/**")
-            .addResourceLocations("file:" + uploadPath + "/")
-            .setCachePeriod(0);
+                .addResourceLocations("file:" + uploadPath + "/")
+                .setCachePeriod(0);
+
 
     }
+
 }

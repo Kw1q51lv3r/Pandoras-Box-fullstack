@@ -3,25 +3,24 @@ package org.generation.PandorasBox.controller.dto;
 public class ItemDto {
 
     //Needs to have the same attributes with the table
+
     private String productName;
-    private String productID;
     private Integer productPrice;
     private String productDescription;
     private String productTrivia;
     private String productImgURL;
-    private Integer RecoDelivery;
+    private Integer productDelivery;
     private String productRemarks;
     private String productCategory;
 
 
-    public ItemDto(String productName, String productID, Integer productPrice, String productDescription, String productTrivia, String productImgURL, Integer RecoDelivery, String productRemarks, String productCategory) {
+    public ItemDto(String productName, Integer productPrice, String productDescription, String productTrivia, String productImgURL, Integer productDelivery, String productRemarks, String productCategory) {
         this.productName = productName;
-        this.productID = productID;
         this.productPrice = productPrice;
         this.productDescription = productDescription;
         this.productTrivia = productTrivia;
         this.productImgURL = productImgURL;
-        this.RecoDelivery = RecoDelivery;
+        this.productDelivery = productDelivery;
         this.productRemarks = productRemarks;
         this.productCategory = productCategory;
     }
@@ -32,14 +31,6 @@ public class ItemDto {
 
     public void setProductName(String productName) {
         this.productName = productName;
-    }
-
-    public String getProductID() {
-        return productID;
-    }
-
-    public void setProductID(String productID) {
-        this.productID = productID;
     }
 
     public Integer getProductPrice() {
@@ -74,12 +65,12 @@ public class ItemDto {
         this.productImgURL = productImgURL;
     }
 
-    public Integer getRecoDelivery() {
-        return RecoDelivery;
+    public Integer getProductDelivery() {
+        return productDelivery;
     }
 
-    public void setRecoDelivery(Integer recoDelivery) {
-        RecoDelivery = recoDelivery;
+    public void setProductDelivery(Integer productDelivery) {
+        this.productDelivery = productDelivery;
     }
 
     public String getProductRemarks() {
