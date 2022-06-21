@@ -11,22 +11,40 @@ class ProductController {
     //METHODS
 
     //MTD 1: addProduct method - to add individual productItem object
-    addProduct(productID, productName, productPrice, productDescription, productTrivia, productImgURL, productDelivery, productRemarks, productCategory){
+    addProduct(productID, productName, productPrice, productDescription, productTrivia, productImgURL, productDelivery, productRemarks,
+    productCategory, imageObject){
 
-        const productItem = {
-            id: productID,
-            name: productName,
-            price: productPrice,
-            desc: productDescription,
-            trivia: productTrivia,
-            img: productImgURL,
-            delivery: productDelivery,
-            remarks: productRemarks,
-            category: productCategory,
+                var productController = this;
+                const formData = new FormData();
+                formData.append('productID', productID);
+                formData.append('productName', productName);
+                formData.append('productPrice', productPrice);
+                formData.append('productDescription', productDescription);
+                formData.append('productTrivia', productTrivia);
+                formData.append('productImgURL', productImgURL);
+                formData.append('productDelivery', productDelivery);
+                formData.append('productRemarks', productRemarks);
+                formData.append('productCategory', productCategory);
+                formData.append('imagefile',imageObject);
+
+               fetch('http://localhost:8080/item/add', {
+                     method: 'POST',
+                     body: formData
+                     })
+                     .then(function(response) {
+                         console.log(response.status); // Will show you the status
+                         if (response.ok) {
+                             alert("Successfully Added Product!")
+                         }
+                     })
+                     .catch((error) => {
+                         console.error('Error:', error);
+                         alert("Error adding item to Product")
+                     });
 
         } //end of productItem object with properties
 
-        //push each indivisual productItem to allProductItems array
+        //push each individual productItem to allProductItems array
         this.allProductItems.push(productItem);
         console.log(this.allProductItems)
 

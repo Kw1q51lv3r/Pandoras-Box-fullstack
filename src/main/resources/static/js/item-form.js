@@ -29,7 +29,7 @@ newItemForm.addEventListener('submit', (event) => {
     const price = newItemPrice.value;
     const desc = newItemDescription.value;
     const trivia = newItemTrivia.value;
-    const img = newItemImage.value;
+    const img = newItemImage.value.replace("C;\\fakepath\\", "");
     const recoDelivery = newItemRD.value;
     const remarks = newItemRemarks.value;
     const category = newItemCategory.value;
@@ -40,7 +40,7 @@ newItemForm.addEventListener('submit', (event) => {
     */
 
     // Add the item to the ItemsController
-    itemsController.addProduct(product, name, id, price, desc, trivia, img, recoDelivery, remarks, category);
+    itemsController.addProduct(product, name, id, price, desc, trivia, img, recoDelivery, remarks, category, storeImage);
 
     // Clear the form
     newItemProduct.value = '';
@@ -53,4 +53,9 @@ newItemForm.addEventListener('submit', (event) => {
     newItemRD.value = '';
     newItemRemarks.value = '';
     newItemCategory.value = '';
+});
+
+// add event listener
+input.addEventListener('change', () => {
+    storeImage = input.files[0];
 });
